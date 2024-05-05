@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-step Form with Tailwind CSS</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> -->
+<script src="https://kit.fontawesome.com/4b8511c457.js" crossorigin="anonymous"></script>
+<style>
+  .form-step {
+    display: none;
+  }
+  .form-step.active {
+    display: block;
+  }
+  .progress-bar {
+    position: relative;
+    height: 4px;
+    background-color: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #2563eb;
+  }
+</style>
+</head>
+<body class="bg-gray-100">
+<div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md mt-10">
+  <!-- progress bar start here -->
+  <div class="w-full mb-4">
+    <h3 class="pb-3">Step 1/3</h3>
+    <div class="progress-bar">
+      <div id="progressBar" class="progress-bar-fill" style="width: 0;"></div>
+    </div>
+  </div>
+  <!-- SignUp section start here -->
+  <div class="form-step active" id="step1">
+    <h2 class="text-2xl font-semibold mb-4">Create in account</h2>
+    <form id="step1Form">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" name="name" required class="mt-1 p-2 w-full border rounded-md bg-gray-200 
+        placeholder:text-blac autofill:bg-yellow-200k placeholder:text-[14px] ">
+        <p id="nameError" class="text-red-500 hidden ">Please enter your name.</p>
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" name="email" required class="mt-1 p-2 w-full border rounded-md
+        bg-gray-200 placeholder">
+        <p id="emailError" class="text-red-500 hidden">Please enter a valid email address.</p>
+      </div>
+      <div class="mb-4">
+        <label for="confirm_email" class="block text-sm font-medium text-gray-700">Confirm Email:</label>
+        <input type="email" id="confirm_email" name="confirm_email" required class="mt-1 p-2 w-full border rounded-md bg-gray-200">
+        <p id="confirmEmailError" class="text-red-500 hidden">Please confirm your email address.</p>
+      </div>
+      <div class="flex justify-center gap-10 items-center pb-3 ">
+        <i class="fa-brands fa-google text-2xl text-center text-blue-500"></i>
+        <i class="fa-brands fa-facebook text-2xl text-blue-500 "></i>      </div>
+      <div class="flex justify-between items-center">
+        <button type="button" onclick="nextStep('step1')" class="bg-blue-500 text-white p-2 w-full rounded-md hover:bg-blue-600 ">SignUp</button>
+      </div>
+    </form>
+  </div>
+  <!-- Login section Start Here -->
+  <!-- <div class="form-step" id="step2">
+    <h2 class="text-lg font-semibold mb-4">Login</h2>
+    <form id="step2Form">
+      <div class="flex justify-evenly items-center">
+        <i class="fa-brands fa-facebook text-2xl text-blue-500"></i>
+        <i class="fa-brands fa-linkedin text-2xl text-blue-500"></i>
+        <i class="fa-brands fa-square-twitter text-2xl text-blue-500"></i>
+      </div>
+      <div class="mb-4">
+        <label for="login_name" class="block text-sm font-medium text-gray-700">Name:</label>
+        <input type="text" id="login_name" name="login_name" required class="mt-1 p-2 w-full border rounded-md">
+        <p id="loginNameError" class="text-red-500 hidden">Please enter your name.</p>
+      </div>
+      <div class="mb-4">
+        <label for="login_email" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input type="email" id="login_email" name="login_email" required class="mt-1 p-2 w-full border rounded-md">
+        <p id="loginEmailError" class="text-red-500 hidden">Please enter a valid email address.</p>
+      </div>
+      <div class="flex justify-between items-center pb-5">
+        <div class="flex pr-2">
+        <p class="text-sm"><input type="checkbox">Remember Me</p>
+        </div>
+        <div>
+        <p class="text-sm">Forgot Password?</p>
+        </div>
+      </div>
+      <div class="flex justify-center items-center">
+        <button type="button" onclick="prevStep('step2')" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500">Back</button>
+        <button type="button" onclick="nextStep('step2')" class="bg-blue-500 text-white w-full py-2 rounded-md hover:bg-blue-600 mb-5 font-medium">Log in</button>
+      </div>
+      <div class="text-center text-xs">
+        <p class="text-gray-500">By creating an account, I agree to Pngtree'sTerms of Service<br>
+          Privacy PolicyandIntellectual Property Rights<br>
+          Not a member? <span class="text-blue-700 font-medium text-sm">Sign up</span></p>
+      </div>
+    </form>
+  </div> -->
+  <!-- interest section  start here -->
+  <div class="form-step text-center" id="step2">
+    <h2 class="text-lg font-semibold mb-4">Interests</h2>
+    <p class="text-2xl font-medium">what are your tecnology interests ?</p>
+    <p class="text-sm mb-7">Select the tecnology interests you the most <br>
+      you will be asked to indicate your proficieny level of each tecnology<br> 
+    </p>
+    <form id="step3Form">
+      <div class="mb-4">
+        <!-- <label class="block text-base font-medium text-gray-700">Select your interests</label> -->
+        <!-- <h3 class="flex flex-col justify-items-start">Web</h3> -->
+        <div class="flex items-center">
+          <input type="radio" id="option1" name="option" class="hidden">
+          <label for="option1" class="cursor-pointer bg-gray-200 px-4 py-2 rounded-lg mr-4" onclick="hideCheckbox(this)">Option 1</label>
+      </div>
+      
+        
+          <!-- <input type="checkbox" id="web" name="web" value="Web Development" class="mr-5 text-[13px]">
+            <label for="web" class="mr-4">Web Dev</label>
+            <input type="checkbox" id="app" name="app" value="App Development" class="mr-5">
+            <label for="app" class="mr-4">App Dev</label>
+            <input type="checkbox" id="data_science" name="data_science" value="Data Science" class="mr-5">
+            <label for="data_science">D`S</label> -->
+          <!-- <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-lg font-medium">Web Developing</p>
+          <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Marketing</p>
+          <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">V.Editing</p>
+          <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Blockchian</p> -->
+        </div>
+        <div class="flex justify-evenly items-center mt-1">
+            <!-- <input type="checkbox" id="web" name="web" value="Web Development" class="mr-5">
+            <label for="web" class="mr-4">Ai</label>
+            <input type="checkbox" id="app" name="app" value="App Development" class="mr-5">
+            <label for="app" class="mr-4">Marketing</label>
+            <input type="checkbox" id="data_science" name="data_science" value="Data Science" class="mr-5">
+            <label for="data_science">Designing</label> -->
+            <!-- <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-lg font-medium">DataScience</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Al/ML</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Deep Leaning</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Deep Mining</p> -->
+          </div>
+          <div class="flex justify-evenly items-center mt-1">
+            <!-- <input type="checkbox" id="web" name="web" value="Web Development" class="mr-5">
+            <label for="web" class="mr-4">Ai</label>
+            <input type="checkbox" id="app" name="app" value="App Development" class="mr-5">
+            <label for="app" class="mr-4">Marketing</label>
+            <input type="checkbox" id="data_science" name="data_science" value="Data Science" class="mr-5">
+            <label for="data_science">Designing</label> -->
+            <!-- <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-lg font-medium">App Developing</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Cyber Security</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">Networking</p>
+            <p class="text-xs px-3 py-1 rounded-lg bg-white shadow-md font-medium">UI/Ux</p> -->
+          </div>
+        <p id="interestsError" class="text-red-500 hidden">Please select at least one interest.</p>
+      </div>
+      <div class="flex justify-between items-center">
+        <!-- <button type="button" onclick="prevStep('step3')" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500">Back</button> -->
+        <button type="button" onclick="nextStep('step3')" class="bg-blue-500 text-white w-full py-2 rounded-md hover:bg-blue-600">Next</button>
+      </div>
+    </form>
+  </div>
+  <div class="form-step" id="step3">
+    <h2 class="text-lg font-semibold mb-4">Thanks</h2>
+    <p>Thank you for completing the form!</p>
+    <img src="../images/signin.webp" height="400px" alt="">
+    <a href="./Home.html">
+      <button type="button" onclick="" class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500">Next</button>
+    </a>
+  </div>
+</div>
+
+<script>
+  function hideCheckbox(checkbox) {
+    checkbox.style.display = 'none';
+}
+  function nextStep(currentStepId) {
+    var currentStep = document.getElementById(currentStepId);
+    if (!validateForm(currentStepId)) {
+      return;
+    }
+    currentStep.classList.remove('active');
+    var nextStep = currentStep.nextElementSibling;
+    if (nextStep) {
+      nextStep.classList.add('active');
+    }
+    updateProgressBar();
+  }
+
+  function prevStep(currentStepId) {
+    var currentStep = document.getElementById(currentStepId);
+    currentStep.classList.remove('active');
+    var prevStep = currentStep.previousElementSibling;
+    if (prevStep) {
+      prevStep.classList.add('active');
+    }
+    updateProgressBar();
+  }
+
+  function validateForm(stepId) {
+    var form = document.getElementById(stepId + 'Form');
+    var inputs = form.querySelectorAll('input[required]');
+    var isValid = true;
+    inputs.forEach(input => {
+      if (!input.value) {
+        input.classList.add('border', 'border-red-500');
+        isValid = false;
+        var errorId = input.id + 'Error';
+        var errorElement = document.getElementById(errorId);
+        if (errorElement) {
+          errorElement.classList.remove('hidden');
+        }
+      } else {
+        input.classList.remove('border', 'border-red-500');
+        var errorId = input.id + 'Error';
+        var errorElement = document.getElementById(errorId);
+        if (errorElement) {
+          errorElement.classList.add('hidden');
+        }
+      }
+    });
+
+    // Additional validation for step 3 (Interests)
+    if (stepId === 'step3') {
+      var interests = form.querySelectorAll('input[name^="interest"]:checked');
+      if (interests.length === 0) {
+        var interestsError = document.getElementById('interestsError');
+        if (interestsError) {
+          interestsError.classList.remove('hidden');
+        }
+        isValid = true;
+      } else {
+        var interestsError = document.getElementById('interestsError');
+        if (interestsError) {
+          interestsError.classList.add('hidden');
+        }
+      }
+    }
+
+    return isValid;
+  }
+
+  function updateProgressBar() {
+    var steps = document.querySelectorAll('.form-step');
+    var progressBar = document.getElementById('progressBar');
+    var completedSteps = 0;
+    steps.forEach(step => {
+      if (step.classList.contains('active')) {
+        return false;
+      }
+      completedSteps++;
+    });
+    var progress = (completedSteps / (steps.length - 1)) * 100; // Exclude the last step
+    progressBar.style.width = progress + '%';
+    if (completedSteps === steps.length - 1) {
+      progressBar.style.width = '35%';
+    }
+  }
+</script>
+</body>
+</html>
