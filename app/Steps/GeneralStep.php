@@ -19,6 +19,7 @@ class GeneralStep extends Step
             'name'                  => $this->model->name,
             'email'                 => $this->model->email,
             'password'              => $this->model->password,
+            'city'              => $this->model->city,
         ]);
     }
 
@@ -41,11 +42,15 @@ class GeneralStep extends Step
                 'state.name'        => ['required'],
                 'state.email'       => ['required', Rule::unique('users', 'email')->ignoreModel($this->model)],
                 'state.password'    => ['required','confirmed'],
+                'state.city'    => ['required'],
             ],
             [
                 'state.name'     => __('The Name field is required!'),
-                'state.email'    => __('The Email field is required!'),
-                'state.password'    => __('The Password field is required!'),
+                'state.city'     => __('The City field is required!'),
+                'state.email.required'    => __('The Email field is required!'),
+                'state.email.unique'    => __('This Email has already been taken!'),
+                'state.password.required'    => __('The Password field is required!'),
+                'state.password.confirmed'    => __('The Password confirmation is not matched!'),
             ],
         ];
     }

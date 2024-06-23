@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
         'city',
         'interest',
+        'level_of_education',
+        'experience',
+        'career_goal',
+        'interested_in_new_technologies',
     ];
 
     public function SuggestedTechnologies()
@@ -32,6 +36,11 @@ class User extends Authenticatable
     public function SuggestedCompanies()
     {
         return $this->hasMany(SuggestedCompanies::class);
+    }
+
+    public function roadmaps()
+    {
+        return $this->hasMany(UserRoadmaps::class);
     }
 
 

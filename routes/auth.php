@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 
-Route::get('register', RegisterWizard::class)->name('register');
 
 Route::middleware('guest')->group(function () {
     // Volt::route('register', 'livewire:register-wizard')

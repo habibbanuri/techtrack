@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use App\Steps\CityStep;
+use App\Steps\ExperienceStep;
 use App\Steps\GeneralStep;
 use App\Steps\InterestStep;
 use App\Steps\UserInterests;
@@ -20,16 +21,13 @@ class RegisterWizard extends WizardComponent
 
     public array $steps = [
         GeneralStep::class,
-        CityStep::class,
         InterestStep::class,
-        // UserInterests::class
+        ExperienceStep::class
     ];
 
     public function model(): User
     {
         return new User();
     }
-
-
 
 }

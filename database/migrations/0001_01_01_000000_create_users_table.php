@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.  
      */
     public function up(): void
     {
@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->string('city');
             $table->string('interest');
+            $table->string('level_of_education');
+            $table->text('experience');
+            $table->text('career_goal');
+            $table->boolean('interested_in_new_technologies');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,13 +20,7 @@ return new class extends Migration
         });
 
 
-        // // Create UserInterests table
-        // Schema::create('user_interests', function (blueprint $table) {
-        //     $table->id();
-        //     $table->string('name');
-        //     $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        //     $table->timestamps();
-        // });
+  
 
         // Create SuggestedCompanies table
         Schema::create('suggested_companies', function (blueprint $table) {

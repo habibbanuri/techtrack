@@ -9,4 +9,5 @@ class AllJobs extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
 }

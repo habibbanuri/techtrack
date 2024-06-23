@@ -19,7 +19,7 @@ class InterestStep extends Step
     /*
      * Initialize step fields
      */
-    public function mount($state = [])
+    public function mount()
     {
         $this->mergeState([
             'interest'                  => $this->model->interest,
@@ -27,21 +27,17 @@ class InterestStep extends Step
     }
 
 
-    public function save($state)
+
+
+    public function updatedState($name, $value)
     {
-        $user = User::create([
-            'name' => $state['name'],
-            'email' => $state['email'],
-            'password' => Hash::make($state['password']),
-            'city' => $state['city'],
-            'interest' => $state['interest'],
-        ]);
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect()->route('dashboard');
+        if ($name === 'state.interest') {
+            session()->put('interest', $value);
+        }
     }
+
+
+   
 
     /*
     * Step icon

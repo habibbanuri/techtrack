@@ -10,6 +10,8 @@ new class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public string $experience = '';
+    public string $career_goal = '';
 
     /**
      * Mount the component.
@@ -18,6 +20,8 @@ new class extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->experience = Auth::user()->experience;
+        $this->career_goal = Auth::user()->career_goal;
     }
 
     /**
@@ -29,6 +33,8 @@ new class extends Component
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
+            'experience' => ['required'],
+            'career_goal' => ['required'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
 
@@ -102,6 +108,16 @@ new class extends Component
                     @endif
                 </div>
             @endif
+        </div>
+        <div>
+            <x-input-label for="experience" :value="__('Previous Experience')" />
+            <x-text-input wire:model="experience" id="experience" name="experience" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('experience')" />
+        </div>
+        <div>
+            <x-input-label for="career_goal" :value="__('Career Goal')" />
+            <x-text-input wire:model="career_goal" id="career_goal" name="career_goal" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('career_goal')" />
         </div>
 
         <div class="flex items-center gap-4">

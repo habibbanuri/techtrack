@@ -1,5 +1,5 @@
 <div class="mb-2 text-3xl text-center font-bold text-gray-800">Choose your interest</div>
-<div class="mb-8 text-base text-center font-thin text-gray-500">Please choose a tech field from the given options</div>
+<div class="mb-8 text-base text-center font-medium text-gray-500">Please choose a tech field from the given options</div>
 
 <ul class="flex flex-col space-y-6">
     <li>
@@ -60,7 +60,7 @@
         </label>
     </li>
     <li>
-        <input type="radio" wire:model="state.interest" id="ai" name="interest" value="AI"
+        <input type="radio" wire:model="state.interest" id="ai" name="interest" value="artificial_intelligence"
             class="hidden peer" />
         <label for="ai"
             class="inline-flex items-center justify-between w-full py-4 px-6 text-gray-500 bg-gray-50 border shadow-sm rounded-xl cursor-pointer  peer-checked:border-blue-500 peer-checked:text-blue-500 ">
@@ -78,4 +78,5 @@
 
         </label>
     </li>
+
 </ul>
