@@ -25,7 +25,7 @@
 
 <body class="antialiased font-poppins" x-data="{ modelOpen: false }">
     <div class="flex w-full min-h-screen bg-gray-100 fixed">
-        <!-- Sidebar -->
+        <!---------------------------- Sidebar start here----------------------------- -->
         <div class=" flex flex-col border-r-2 justify-between items-start text-gray-700 w-1/5 max-h-screen">
             {{-- <div class="fixed"> --}}
 
