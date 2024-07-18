@@ -2,7 +2,9 @@
 <div class="px-8 pt-8 pb-20 max-h-screen overflow-x-auto h-full soft-scrollbar">
     <div class=" grid grid-cols-3 gap-4">
         <div class="text-xl mb-5 font-bold text-gray-700 col-span-2">
-            <div class="text-xl mb-5 font-bold text-gray-700">AI Suggestions for you! </div>
+            <div class="text-xl mb-5 font-bold text-gray-700"><span
+                    class="text-gray-100 bg-blue-500 p-1 capitalize inline-block -skew-y-3">AI Suggestions</span>
+                for you! </div>
             <livewire:ai-response />
         </div>
 
@@ -56,9 +58,11 @@
 
     </div>
     <!-- Companies hiring section start here -->
-    <div class="pb-16">
+    <div class="pb-16 pt-5">
         <div class="flex items-center justify-between mb-5">
-            <h3 class="text-xl font-bold text-gray-700">Companies you may want to apply</h3>
+            <h3 class="text-xl font-bold text-gray-700"><span
+                    class="text-gray-100 bg-blue-500 p-1 capitalize inline-block -skew-y-3">Companies</span>
+                you may want to apply</h3>
             <a href="/companies" class="text-gray-800 font-bold text-sm hover:text-blue-500 transition"
                 wire:navigate>See
                 all</a>

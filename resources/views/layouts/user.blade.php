@@ -171,7 +171,7 @@
                     </div>
                     <h2 class="text-xl font-medium capitalize">Hi,{{ auth()->user()->name }}</h2>
                 </div>
-                <livewire:search-component />
+                {{-- <livewire:search-component /> --}}
             </div>
 
             <!-- Page Content -->

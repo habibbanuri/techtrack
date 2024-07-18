@@ -35,5 +35,5 @@
 </div>
 <a class="mr-2 hover:underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none "
     href="{{ route('login') }}" wire:navigate>
-    {{ __('Already have an account?') }}
+    Already have an account? <span class="text-blue-500 hover:text-blue-700 transition font-bold">Login</span>
 </a>

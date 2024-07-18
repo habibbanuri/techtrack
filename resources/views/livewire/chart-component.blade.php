@@ -1,7 +1,7 @@
 <div wire:ignore class="">
-    <div class="text-xl mb-5 font-bold text-gray-700">Trending Technologies for
+    <div class="text-xl mb-5 font-bold text-gray-700">Trending 
         <span
-            class="text-gray-100 bg-blue-500 p-1 capitalize inline-block -skew-y-3">{{ str_replace('_', ' ', auth()->user()->interest) }}</span>
+            class="text-gray-100 bg-blue-500 p-1 capitalize inline-block -skew-y-3">Technologies</span>
     </div>
 
     <canvas id="myChart" class="my-5 w-5/6 "></canvas>
